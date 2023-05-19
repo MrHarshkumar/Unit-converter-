@@ -1,0 +1,19 @@
+html {
+    height: 100%;
+    width: 100%;
+  }
+  body{
+    background-color: aqua;
+  }
+  .data{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #answer{
+    text-align: center;
+  }
+  #sel{
+    height:22px;
+  }
+  
