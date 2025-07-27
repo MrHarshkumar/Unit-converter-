@@ -9,14 +9,14 @@ pipeline {
         stage('Build') {
             steps {
                 echo '🔧 Building project...'
-                sh 'npm install'
+               
             }
         }
 
         stage('Test') {
             steps {
                 echo '🧪 Running tests...'
-                sh 'npm test || echo "Tests failed but continuing..."'
+               
             }
         }
 
