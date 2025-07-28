@@ -8,9 +8,12 @@ pipeline {
     stages {
         stage('Link Vercel Project') {
             steps {
-                echo '🔗 Linking project to Vercel...'
+                echo '🔗 Linking to Vercel project...'
                 sh '''
-                vercel link --token=$VERCEL_TOKEN --org team_XxcCiJVpjnVJyfm2S7GcTtQb --project prj_0nfmswDytXEGTn3ozx9664BIGtBb --yes
+                vercel link \
+                  --token=$VERCEL_TOKEN \
+                  --project unit-converter \
+                  --yes
                 '''
             }
         }
