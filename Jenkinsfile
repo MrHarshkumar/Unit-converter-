@@ -9,7 +9,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo '🚀 Deploying...'
-                sh 'vercel --prod --token=$VERCEL_TOKEN --yes'
+                sh 'vercel --prod --token=$VERCEL_TOKEN --yes --confirm'
+
             }
         }
     }
