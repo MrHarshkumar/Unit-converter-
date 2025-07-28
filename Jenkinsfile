@@ -2,33 +2,27 @@ pipeline {
     agent any
 
     environment {
-        VERCEL_TOKEN = credentials('vercel-token') // 🔐 Use the ID you set
+        VERCEL_TOKEN = credentials('vercel-token')
+        NPM_CONFIG_PREFIX = "$HOME/.npm-global"
+        PATH = "$HOME/.npm-global/bin:$PATH"
     }
 
     stages {
-        stage('Build') {
+        stage('Setup Vercel CLI') {
             steps {
-                echo '🔧 Building project...'
-               
-            }
-        }
-
-        stage('Test') {
-            steps {
-                echo '🧪 Running tests...'
-               
-            }
-        }
-
-        stage('Deploy to Vercel') {
-            steps {
-                echo '🚀 Deploying to Vercel...'
+                echo '📦 Installing Vercel CLI...'
                 sh '''
+                    mkdir -p $HOME/.npm-global
                     npm install -g vercel
-                    vercel --prod --token=$VERCEL_TOKEN --yes
                 '''
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo '🚀 Deploying...'
+                sh 'vercel --prod --token=$VERCEL_TOKEN --yes'
             }
         }
     }
 }
-
