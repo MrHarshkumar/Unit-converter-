@@ -1,6 +1,6 @@
 pipeline {
     // agent any
-    label 'harsh slave'
+    agent { label 'harsh-slave' }
 
     environment {
         VERCEL_TOKEN = credentials('vercel-token')
